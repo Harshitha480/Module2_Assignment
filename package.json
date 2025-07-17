@@ -1,25 +1,34 @@
 {
-  "name": "module2_assignment",
+  "name": "movie-tv-show-tracker",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon backend/server.js",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "node backend/server.js",
+    "install-client": "cd frontend && npm install",
+    "install-server": "npm install",
+    "install-all": "npm run install-server && npm run install-client"
   },
-  "keywords": [],
+  "keywords": ["movie", "tv", "tracker", "mern", "react", "mongodb", "express"],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "A full-stack MERN application for tracking movies and TV shows",
   "dependencies": {
-    "express": "^5.1.0",
-    "uuid": "^11.1.0"
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.0.0",
+    "express-rate-limit": "^6.8.1"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3",
-    "@types/uuid": "^10.0.0",
-    "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "nodemon": "^3.0.1",
+    "concurrently": "^8.2.0"
   }
 }
